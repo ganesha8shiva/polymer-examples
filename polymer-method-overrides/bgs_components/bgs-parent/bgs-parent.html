@@ -1,0 +1,15 @@
+<polymer-element name="bgs-parent" attributes="name urlFor">
+  <template>
+    <button on-click="{{urlFor}}">{{name}}</button>
+  </template>
+  <script>
+    Polymer('bgs-parent', {
+      urlFor: function() {
+         alert("alert of " + this.name);
+      },
+      urlCaller: function() {
+        this.urlFor();
+      }
+    });
+  </script>
+</polymer-element>

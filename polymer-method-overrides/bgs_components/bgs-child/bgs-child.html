@@ -1,0 +1,15 @@
+
+<link rel="import" href="../../bgs_components/bgs-parent/bgs-parent.html">
+<polymer-element name="bgs-child">
+  <template>
+    <bgs-parent name="Parent1" urlFor="{{computeUrlFor}}"></bgs-parent>
+    <bgs-parent name="Parent2" ></bgs-parent>
+  </template>
+  <script>
+    Polymer('bgs-child', {
+      computeUrlFor: function() {
+        alert("alert of bgs-child")
+      }
+    });
+  </script>
+</polymer-element>
