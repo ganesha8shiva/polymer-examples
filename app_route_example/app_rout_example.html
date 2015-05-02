@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>App Rout Example</title>
+        <link rel="import" href="/bower_components/polymer/polymer.html">
+        <link rel="import" href="/bower_components/app-router/app-router.html">
+        <link rel="import" href="/bower_components/core-drawer-panel/core-drawer-panel.html">
+        <link rel="import" href="/bgs_components/bgs-users/bgs-users.html">
+        <link rel="import" href="/bgs_components/bgs-user-details/bgs-user-details.html">
+
+        <style>
+
+          [drawer] {
+            background-color: lightgray;
+            border-right: 1px solid #ccc;
+          }
+          [main] {
+            background: snow
+          }
+
+        </style>
+    </head>
+
+    <body>
+        <core-drawer-panel>
+          <div drawer>
+              <bgs-users></bgs-users>
+          </div>
+          <div main>
+              <!-- <bgs-user-details></bgs-user-details> -->
+              <app-router mode="auto|pushstate|hash">
+                <!-- <app-route path="/user/:userId" import="/bgs_components/bgs-user-details/bgs-user-details.html"></app-route> -->
+                <app-route path="/user/:userId" element="bgs-user-details"></app-route>
+                <!-- <app-route path="/user/:userId" import="/bgs_components/bgs-user-details/bgs-user-details.html" [element="bgs-user-details"]></app-route> -->
+              </app-router>
+          </div>
+
+        </core-drawer-panel>
+
+    </body>
+</html>

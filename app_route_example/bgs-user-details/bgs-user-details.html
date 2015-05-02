@@ -1,0 +1,32 @@
+<polymer-element name="bgs-user-details" id="bgs-preview-1" attributes="userId">
+    <template>
+      Your order number is {{userId}}
+    <style></style>
+    </template>
+    <script>
+    var prevUserid = null;
+    Polymer('bgs-user-details',{
+            //userId:null,
+            //prevUserid:null,
+            userIdChanged: function(oldValue, newValue) {
+                alert('prevUserid: ' + prevUserid);
+                alert('newValue: ' + newValue);
+                this.submit();
+                prevUserid= newValue;
+            },
+            submit: function() {
+                if(prevUserid == "new") {
+                    alert('insert is called: ' + prevUserid);
+                } else if(prevUserid == undefined) {
+                    alert('no operation');
+                } else {
+                    alert('update is called for id: ' + prevUserid);
+                }
+            },
+            validation: function() {
+
+                return true;
+            }
+    });
+    </script>
+</polymer-element>

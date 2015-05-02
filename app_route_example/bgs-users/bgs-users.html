@@ -1,0 +1,40 @@
+<polymer-element name="bgs-users">
+  <template>
+    <a on-click="{{selected}}" id="1" style='cursor:pointer;color:firebrick;'>User 1 </a><br/>
+    <a on-click="{{selected}}" id="2"  style='cursor:pointer;color:firebrick;'>User 2 </a><br/>
+    <a on-click="{{selected}}" id="3"  style='cursor:pointer;color:firebrick;'>User 3 </a><br/>
+    <a on-click="{{selected}}" id="4"  style='cursor:pointer;color:firebrick;'>User 4 </a><br/>
+    <button on-click="{{addNew}}">Add</button>
+    <style></style>
+  </template>
+  <script>
+    var isFirstTime = true;
+    Polymer('bgs-users',{
+        addNew: function(){
+
+            //if validated
+            //alert(document.querySelector('bgs-user-details'));
+            if(isFirstTime) {
+                document.querySelector('app-router').go('/user/new',{replace: true});
+                isFirstTime=false;
+            } else {
+                if(document.querySelector('bgs-user-details').validation()==true) {
+                    document.querySelector('app-router').go('/user/new',{replace: true});
+                }
+            }
+        },
+        selected: function(event, detail, sender) {
+            //if validated
+            if(isFirstTime) {
+                document.querySelector('app-router').go('/user/new',{replace: true});
+                isFirstTime=false;
+            } else {
+                if(document.querySelector('bgs-user-details').validation()==true) {
+                    document.querySelector('app-router').go('/user/' + sender.getAttribute('id'),{replace: true});
+                }
+            }
+        }
+
+    });
+  </script>
+</polymer-element>
