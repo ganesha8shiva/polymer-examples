@@ -1,0 +1,63 @@
+####################################
+Polymer Overrides Parent Method
+####################################
+>> Short defination of Polymer Components
+decouble bundle/component of script (JS) and design (html), we can make pieces and arrage or plug with each other create bigger component
+kind of lego pieces
+
+
+I want to discuss one feature of P, expose method defination to child component to plug customized logic
+- method overriding
+- late binding
+- runtime polymerphism
+- Overrides Parent Method
+
+Keeping things short and plunge into code
+
+<polymer-element name="bgs-parent" attributes="name urlFor">
+  <template>
+    <button on-click="{{urlFor}}">{{name}}</button>
+  </template>
+  <script>
+    Polymer('bgs-parent', {
+      urlFor: function() {
+         alert("alert of " + this.name);
+      },
+      urlCaller: function() {
+        this.urlFor();
+      }
+    });
+  </script>
+</polymer-element>
+
+
+
+<link rel="import" href="../../bgs_components/bgs-parent/bgs-parent.html">
+<polymer-element name="bgs-child">
+  <template>
+    <bgs-parent name="Parent1" urlFor="{{computeUrlFor}}"></bgs-parent>
+    <bgs-parent name="Parent2" ></bgs-parent>
+  </template>
+  <script>
+    Polymer('bgs-child', {
+      computeUrlFor: function() {
+        alert("alert of bgs-child")
+      }
+    });
+  </script>
+</polymer-element>
+
+<!doctype html>
+<html>
+  <head>
+    <title>App Router</title>
+    <link rel="import" href="/bower_components/polymer/polymer.html">
+    <link rel="import" href="/bgs_components/bgs-child/bgs-child.html">
+  </head>
+  <body>
+        <bgs-child></bgs-child>
+  </body>
+</html>
+
+make sure you have bower_components and same level at bgs_component
+Ref: https://www.polymer-project.org/0.5/docs/start/getting-the-code.html
